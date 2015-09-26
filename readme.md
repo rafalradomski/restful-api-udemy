@@ -37,3 +37,7 @@ php artisan db:seed
 php artisan make:controller MakerController
 
 php artisan route:list
+
+## Addons
+
+https://www.getpostman.com/ - chrome extension Postman
