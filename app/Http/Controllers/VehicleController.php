@@ -16,11 +16,11 @@ class VehicleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index()    {
-        $items = Vehicle::all();
-        if(!$items) { 
-            return response()->json(['message' => 'No items',  'code' => 404],404);
+        $vehicles = Vehicle::all();
+        if(!$vehicles) { 
+            return response()->json(['message' => 'No vehicles',  'code' => 404],404);
         }
-        return response()->json(['data' => $items], 200);
+        return response()->json(['data' => $vehicles], 200);
     }
 
     /**

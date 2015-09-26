@@ -17,11 +17,11 @@ class MakerController extends Controller {
      */
     public function index()    {
 
-        $items = Maker::all();
-        if(!$items) { 
-            return response()->json(['message' => 'No items',  'code' => 404],404);
+        $maker = Maker::all();
+        if(!$maker) { 
+            return response()->json(['message' => 'No makers',  'code' => 404],404);
         }
-        return response()->json(['data' => $items], 200);
+        return response()->json(['data' => $maker], 200);
     }
 
     /**
@@ -51,12 +51,12 @@ class MakerController extends Controller {
      */
     public function show($id)    {
 
-        $item = Maker::find($id);
+        $maker = Maker::find($id);
 
-        if(!$item) { 
-            return response()->json(['message' => 'No item',  'code' => 404],404);
+        if(!$maker) { 
+            return response()->json(['message' => 'This maker does not exist',  'code' => 404],404);
         }
-        return response()->json(['data' => $item], 200);
+        return response()->json(['data' => $maker], 200);
     }
 
     /**
