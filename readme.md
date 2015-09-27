@@ -38,6 +38,8 @@ php artisan make:controller MakerController
 
 php artisan route:list
 
+php artisan make:request CreateMAkerRequest
+
 ## Addons
 
 https://www.getpostman.com/ - chrome extension Postman

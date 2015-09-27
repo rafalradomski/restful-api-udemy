@@ -11,8 +11,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot()    {
         //
     }
 
@@ -21,8 +20,15 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-        //
+    public function register()    {
+
+        // Swagger
+        $this->app->bind(
+            'Illuminate\Contracts\Auth\Registrar',
+            'App\Services\Registrar'
+        );
+
+        //Register Swagger Provider
+        $this->app->register('Darkaonline\L5Swagger\L5SwaggerServiceProvider');
     }
 }
