@@ -9,9 +9,15 @@ use App\Http\Controllers\Controller;
 use App\Maker; // Load Maker model
 use App\Vehicle; // Load Vehicle model
 
-use App\Http\Requests\CreateVehicleRequest; // CreateVehicleRequest
+use App\Http\Requests\CreateVehicleRequest; // CreateVehicle Request
 
 class MakerVehiclesController extends Controller {
+
+    // Authentication
+    public function __construct() {
+
+        $this->middleware('auth.basic', ['except' => ['index','show']]);
+    }
 
     /**
      * Display a listing of the resource.
@@ -136,10 +142,10 @@ class MakerVehiclesController extends Controller {
             return response()->json(['message' => 'This maker does not exist',  'code' => 404],404);
         }
 
-        $vehicle = $maker->vehicles->find($vehicleId);
+        $vehicles = $maker->vehicles;
 
-        if(!$vehicle) { 
-            return response()->json(['message' => 'This vehicle does not exist',  'code' => 404],404);
+        if(sizeof($vehicles) > 0) {
+            return response()->json(['message' => 'This maker have associated vehicles. Delete his vehicles first',  'code' => 404],404);
         }
 
         $vehicle->delete();

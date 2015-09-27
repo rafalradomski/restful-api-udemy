@@ -13,6 +13,12 @@ use App\Http\Requests\CreateMakerRequest; // CreateMakerRequest
 
 class MakerController extends Controller {
 
+    // Authentication
+    public function __construct() {
+
+        $this->middleware('auth.basic', ['except' => ['index','show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

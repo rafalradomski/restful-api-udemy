@@ -40,6 +40,10 @@ php artisan route:list
 
 php artisan make:request CreateMAkerRequest
 
+php artisan make:migration create_users --create=users
+
+composer dump-autoload
+
 ## Addons
 
 https://www.getpostman.com/ - chrome extension Postman

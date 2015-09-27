@@ -3,7 +3,8 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Maker; // Faker
+use App\Maker; // Maker model
+use App\User; // User model
 
 class DatabaseSeeder extends Seeder {
     
@@ -15,13 +16,15 @@ class DatabaseSeeder extends Seeder {
     public function run() {
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Maker::truncate(); // Everytime new Faker data
+        Maker::truncate(); // clear Everytime new Faker data
+        User::truncate(); // clear  Everytime new Faker data
         Model::unguard();
 
         // $this->call(UserTableSeeder::class);
 
-        $this->call('MakerSeed'); // Faker
-        $this->call('VehiclesSeed'); // Faker
+        $this->call('MakerSeed'); 
+        $this->call('VehiclesSeed'); 
+        $this->call('UsersSeed');
 
         Model::reguard();
     }
