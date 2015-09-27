@@ -23,10 +23,10 @@ class AppServiceProvider extends ServiceProvider
     public function register()    {
 
         // Swagger
-        $this->app->bind(
+        /* $this->app->bind(
             'Illuminate\Contracts\Auth\Registrar',
             'App\Services\Registrar'
-        );
+        );*/
 
         //Register Swagger Provider
         $this->app->register('Darkaonline\L5Swagger\L5SwaggerServiceProvider');

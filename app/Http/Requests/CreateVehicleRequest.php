@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CreateMakerRequest extends Request {
+class CreateVehicleRequest extends Request {
 
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()    {
         return true;
     }
 
@@ -20,10 +20,13 @@ class CreateMakerRequest extends Request {
      *
      * @return array
      */
-    public function rules()   {
+    public function rules()    {
         return [
-            'name' => 'required',
-            'phone' => 'required'
+            'color' => 'required',
+            'power' => 'required',
+            'capacity' => 'required',
+            'speed' => 'required'
+
         ];
     }
 
@@ -31,5 +34,4 @@ class CreateMakerRequest extends Request {
 
         return response()->json(['message' => $errors, 'code' => 422], 422);
     }
-
 }
