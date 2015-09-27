@@ -29,7 +29,10 @@ class MakerVehiclesController extends Controller {
         $maker = Maker::find($id);
 
         if(!$maker) { 
-            return response()->json(['message' => 'This maker does not exist',  'code' => 404],404);
+            return response()->json([
+                'message' => 'This maker does not exist',  
+                'code' => 404
+                ],404);
         }
         return response()->json(['data' => $maker->vehicles], 200);
     }
@@ -54,14 +57,19 @@ class MakerVehiclesController extends Controller {
         $maker = Maker::find($makerId);
 
         if(!$maker) { 
-            return response()->json(['message' => 'This maker does not exist',  'code' => 404],404);
+            return response()->json([
+                'message' => 'This maker does not exist',  
+                'code' => 404
+                ],404);
         }
 
         $values = $request->all();
 
         $maker->vehicles()->create($values);
 
-        return response()->json(['message' => 'The vehicle associated was created',  201]);
+        return response()->json([
+            'message' => 'The vehicle associated was created',  201
+            ]);
     }
 
     /**
@@ -75,13 +83,19 @@ class MakerVehiclesController extends Controller {
         $maker = Maker::find($id);
 
         if(!$maker) { 
-            return response()->json(['message' => 'This maker does not exist',  'code' => 404],404);
+            return response()->json([
+                'message' => 'This maker does not exist',  
+                'code' => 404
+                ],404);
         }
 
         $vehicle = $maker->vehicles->find($vehicleId);
 
         if(!$vehicle) { 
-            return response()->json(['message' => 'This vehicle does not exist for this maker',  'code' => 404],404);
+            return response()->json([
+                'message' => 'This vehicle does not exist for this maker',  
+                'code' => 404
+                ],404);
         }
 
         return response()->json(['data' => $vehicle], 200);
@@ -109,13 +123,19 @@ class MakerVehiclesController extends Controller {
         $maker = Maker::find($makerId);
 
         if(!$maker) { 
-            return response()->json(['message' => 'This maker does not exist',  'code' => 404],404);
+            return response()->json([
+                'message' => 'This maker does not exist',  
+                'code' => 404
+                ],404);
         }
 
         $vehicle = $maker->vehicles->find($vehicleId);
 
         if(!$vehicle) { 
-            return response()->json(['message' => 'This vehicle does not exist',  'code' => 404],404);
+            return response()->json([
+                'message' => 'This vehicle does not exist',  
+                'code' => 404
+                ],404);
         }
 
         $vehicle->color = $request->get('color');
@@ -125,7 +145,9 @@ class MakerVehiclesController extends Controller {
 
         $vehicle->save();
 
-        return response()->json(['message' => 'The vehicle has been updated'], 200);
+        return response()->json([
+            'message' => 'The vehicle has been updated'
+            ], 200);
     }
 
     /**
@@ -139,17 +161,25 @@ class MakerVehiclesController extends Controller {
         $maker = Maker::find($makerId);
 
         if(!$maker) { 
-            return response()->json(['message' => 'This maker does not exist',  'code' => 404],404);
+            return response()->json([
+                'message' => 'This maker does not exist',  
+                'code' => 404
+                ],404);
         }
 
         $vehicles = $maker->vehicles;
 
         if(sizeof($vehicles) > 0) {
-            return response()->json(['message' => 'This maker have associated vehicles. Delete his vehicles first',  'code' => 404],404);
+            return response()->json([
+                'message' => 'This maker have associated vehicles. Delete his vehicles first',
+                'code' => 404
+                ],404);
         }
 
         $vehicle->delete();
 
-        return response()->json(['message' => 'The vehicle has been deleted'], 200);
+        return response()->json([
+            'message' => 'The vehicle has been deleted'
+            ], 200);
     }
 }

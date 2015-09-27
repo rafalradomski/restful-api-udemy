@@ -28,7 +28,10 @@ class MakerController extends Controller {
 
         $maker = Maker::all();
         if(!$maker) { 
-            return response()->json(['message' => 'No makers',  'code' => 404],404);
+            return response()->json([
+                'message' => 'No makers',  
+                'code' => 404
+                ],404);
         }
         return response()->json(['data' => $maker], 200);
     }
@@ -54,7 +57,9 @@ class MakerController extends Controller {
 
         Maker::create($values);
 
-        return response()->json(['message' => 'Maker correctly added'], 201);
+        return response()->json([
+            'message' => 'Maker correctly added'
+            ], 201);
     }
 
     /**
@@ -68,9 +73,14 @@ class MakerController extends Controller {
         $maker = Maker::find($id);
 
         if(!$maker) { 
-            return response()->json(['message' => 'This maker does not exist',  'code' => 404],404);
+            return response()->json([
+                'message' => 'This maker does not exist',  
+                'code' => 404
+                ],404);
         }
-        return response()->json(['data' => $maker], 200);
+        return response()->json([
+            'data' => $maker
+            ], 200);
     }
 
     /**
@@ -95,7 +105,10 @@ class MakerController extends Controller {
         $maker = Maker::find($id);
 
         if(!$maker) { 
-            return response()->json(['message' => 'This maker does not exist',  'code' => 404],404);
+            return response()->json([
+                'message' => 'This maker does not exist',  
+                'code' => 404
+                ],404);
         }
 
         $name = $request->get('name');
@@ -106,7 +119,9 @@ class MakerController extends Controller {
 
         $maker->save();
 
-        return response()->json(['message' => 'The maker has been updated'], 200);
+        return response()->json([
+            'message' => 'The maker has been updated'
+            ], 200);
 
     }
 
@@ -121,18 +136,26 @@ class MakerController extends Controller {
         $maker = Maker::find($id);
 
         if(!$maker) { 
-            return response()->json(['message' => 'This maker does not exist',  'code' => 404],404);
+            return response()->json([
+                'message' => 'This maker does not exist',  
+                'code' => 404
+                ],404);
         }
 
         $vehicles = $maker->vehicles;
 
         if(sizeof($vehicles) > 0) {
-            return response()->json(['message' => 'This maker have associated vehicles. Delete his vehicles first',  'code' => 404],404);
+            return response()->json([
+                'message' => 'This maker have associated vehicles. Delete his vehicles first',  
+                'code' => 404
+            ],404);
         }
 
         $maker->delete();
 
-        return response()->json(['message' => 'The maker has been deleted.'], 200);
+        return response()->json([
+            'message' => 'The maker has been deleted.'
+            ], 200);
 
     }
 }

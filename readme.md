@@ -44,6 +44,8 @@ php artisan make:migration create_users --create=users
 
 composer dump-autoload
 
+php artisan migrate:rollback
+
 ## Addons
 
 https://www.getpostman.com/ - chrome extension Postman
