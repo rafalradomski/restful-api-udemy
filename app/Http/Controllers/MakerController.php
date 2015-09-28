@@ -26,14 +26,21 @@ class MakerController extends Controller {
      */
     public function index()    {
 
-        $maker = Maker::all();
-        if(!$maker) { 
+        // $makers = Maker::all();
+        $makers = Maker::simplePaginate(15);
+        if(!$makers) { 
             return response()->json([
                 'message' => 'No makers',  
                 'code' => 404
                 ],404);
         }
-        return response()->json(['data' => $maker], 200);
+        // return response()->json(['data' => $maker], 200);
+        return response()->json([
+            'data' => $makers->items(),
+            'previous' => $makers->previousPageUrl(),
+            'next' => $makers->nextPageUrl(),
+
+            ], 200);
     }
 
     /**

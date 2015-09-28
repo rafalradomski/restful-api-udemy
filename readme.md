@@ -40,6 +40,8 @@ php artisan route:list
 
 php artisan make:request CreateMAkerRequest
 
+php artisan migrate:refresh --seed
+
 php artisan make:migration create_users --create=users
 
 composer dump-autoload

@@ -18,7 +18,7 @@ class VehiclesSeed extends Seeder {
         // Faker
         $faker = Faker::create();
 
-        for( $i =0; $i < 30; $i++) {
+        for( $i =0; $i < 50; $i++) {
             Vehicle::create([
 
                 'color' => $faker->safecolorName(), 
